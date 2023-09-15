@@ -1,5 +1,5 @@
 Class {
 	#name : #CSVSmarkAbstractObject,
 	#superclass : #SMarkSuite,
-	#category : #CSVBenchmarks
+	#category : #'CSVBenchmarks-SMark'
 }

@@ -1,7 +1,7 @@
 Class {
 	#name : #CSVBenchmarksSuite,
 	#superclass : #SMarkSuite,
-	#category : #CSVBenchmarks
+	#category : #'CSVBenchmarks-SMark'
 }
 
 { #category : #benchmarking }

@@ -1,7 +1,7 @@
 Class {
 	#name : #CSVSmarkHarness,
 	#superclass : #ReBenchHarness,
-	#category : #CSVBenchmarks
+	#category : #'CSVBenchmarks-SMark'
 }
 
 { #category : #defaults }

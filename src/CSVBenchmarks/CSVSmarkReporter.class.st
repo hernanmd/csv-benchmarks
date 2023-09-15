@@ -1,7 +1,7 @@
 Class {
 	#name : #CSVSmarkReporter,
 	#superclass : #ReBenchReporter,
-	#category : #CSVBenchmarks
+	#category : #'CSVBenchmarks-SMark'
 }
 
 { #category : #defaults }
