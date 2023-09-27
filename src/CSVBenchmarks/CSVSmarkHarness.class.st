@@ -1,18 +1,20 @@
 Class {
-	#name : #CSVSmarkHarness,
-	#superclass : #ReBenchHarness,
-	#category : #'CSVBenchmarks-SMark'
+	#name : 'CSVSMarkHarness',
+	#superclass : 'ReBenchHarness',
+	#category : 'CSVBenchmarks-SMark',
+	#package : 'CSVBenchmarks',
+	#tag : 'SMark'
 }
 
-{ #category : #defaults }
-CSVSmarkHarness class >> defaultOutputDestination [
+{ #category : 'defaults' }
+CSVSMarkHarness class >> defaultOutputDestination [
 	"Answer a <Stream> used to output receiver's contents"
 
 	^ self defaultReporter defaultOutputDestination
 ]
 
-{ #category : #defaults }
-CSVSmarkHarness class >> defaultReporter [
+{ #category : 'defaults' }
+CSVSMarkHarness class >> defaultReporter [
 
-	^ CSVSmarkReporter
+	^ CSVSMarkReporter
 ]

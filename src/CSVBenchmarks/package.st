@@ -1,1 +1,1 @@
-Package { #name : #CSVBenchmarks }
+Package { #name : 'CSVBenchmarks' }

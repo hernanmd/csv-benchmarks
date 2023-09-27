@@ -1,18 +1,20 @@
 Class {
-	#name : #CSVSmarkReporter,
-	#superclass : #ReBenchReporter,
-	#category : #'CSVBenchmarks-SMark'
+	#name : 'CSVSMarkReporter',
+	#superclass : 'ReBenchReporter',
+	#category : 'CSVBenchmarks-SMark',
+	#package : 'CSVBenchmarks',
+	#tag : 'SMark'
 }
 
-{ #category : #defaults }
-CSVSmarkReporter class >> defaultOutputDestination [
+{ #category : 'defaults' }
+CSVSMarkReporter class >> defaultOutputDestination [
 	"Answer a <Stream> used to output receiver's contents"
 
 	^ self defaultOutputFilename asFileReference writeStream
 ]
 
-{ #category : #defaults }
-CSVSmarkReporter class >> defaultOutputFilename [
+{ #category : 'defaults' }
+CSVSMarkReporter class >> defaultOutputFilename [
 
 	^ String streamContents: [ : stream | 
 		stream
