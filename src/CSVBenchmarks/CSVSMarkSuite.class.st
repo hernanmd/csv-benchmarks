@@ -34,3 +34,15 @@ CSVSMarkSuite class >> example [
 	    }.
 
 ]
+
+{ #category : 'benchmarking' }
+CSVSMarkSuite >> benchCSV [
+	"Read CSV datasets defined in the receiver"
+
+	self problemSize timesRepeat: [ 
+		(CSVSMarkReader 
+			newReader: dataset key 
+			forDataset: dataset value) 
+				perform: benchmarkOperation ]
+
+]
