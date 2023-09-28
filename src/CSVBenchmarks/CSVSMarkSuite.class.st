@@ -17,8 +17,10 @@ CSVSMarkSuite class >> benchmarkParameters [
 	parameterMatrix := super benchmarkParameters.
 	parameterMatrix
 		forSelector: #dataset addOptions: { 
-			(#NeoCSVReader -> #aniProkaryotes) };
-		forSelector: #benchmarkOperation addOptions: { #read }.
+			"(#NeoCSVReader -> #aniProkaryotes) ."
+			(#PP2CommaSeparatedParser -> #aniProkaryotes) };
+		forSelector: #benchmarkOperation addOptions: { 
+			#readCSV }.
 	^ parameterMatrix
 ]
 
@@ -39,10 +41,11 @@ CSVSMarkSuite class >> example [
 CSVSMarkSuite >> benchCSV [
 	"Read CSV datasets defined in the receiver"
 
-	self problemSize timesRepeat: [ 
-		(CSVSMarkReader 
+	| csvReader |
+	csvReader := CSVSMarkReader 
 			newReader: dataset key 
-			forDataset: dataset value) 
-				perform: benchmarkOperation ]
+			forDataset: dataset value.
+	self problemSize timesRepeat: [ 
+		csvReader perform: benchmarkOperation ]
 
 ]

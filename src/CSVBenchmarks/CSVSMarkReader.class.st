@@ -1,7 +1,8 @@
 Class {
 	#name : 'CSVSMarkReader',
-	#superclass : 'CSVSMarkAbstractObject',
+	#superclass : 'Object',
 	#instVars : [
+		'csvStream',
 		'readerClass'
 	],
 	#category : 'CSVBenchmarks-SMark',
@@ -13,9 +14,21 @@ Class {
 CSVSMarkReader class >> newReader: aCSVReaderClass forDataset: aCSVDatasetSelector [
 
 	^ self new
-		readerClass: aCSVReaderClass;
-		initializeDataset: aCSVDatasetSelector;
-		yourself
+		  readerClass: (self class environment at: aCSVReaderClass);
+		  initializeDataset: aCSVDatasetSelector;
+		  yourself
+]
+
+{ #category : 'accessing' }
+CSVSMarkReader >> csvStream [
+
+	^ csvStream
+]
+
+{ #category : 'accessing' }
+CSVSMarkReader >> csvStream: anObject [
+
+	csvStream := anObject
 ]
 
 { #category : 'initialization' }
@@ -27,11 +40,11 @@ CSVSMarkReader >> initializeDataset: aDatasetSelector [
 ]
 
 { #category : 'initialization' }
-CSVSMarkReader >> read [
+CSVSMarkReader >> readCSV [
 
 	^ ZnBufferedReadStream 
 		on: self csvStream 
-		do: [ :stream | ((Smalltalk at: self readerClass) on: stream) next ]
+		do: [ :stream | (self readerClass on: stream) next ]
 ]
 
 { #category : 'accessing' }
