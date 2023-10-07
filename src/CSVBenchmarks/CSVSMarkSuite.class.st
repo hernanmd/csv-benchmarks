@@ -2,8 +2,8 @@ Class {
 	#name : 'CSVSMarkSuite',
 	#superclass : 'SMarkSuite',
 	#instVars : [
-		'dataset',
-		'benchmarkOperation'
+		'benchmarkOperation',
+		'dataset'
 	],
 	#category : 'CSVBenchmarks-SMark',
 	#package : 'CSVBenchmarks',
@@ -17,8 +17,8 @@ CSVSMarkSuite class >> benchmarkParameters [
 	parameterMatrix := super benchmarkParameters.
 	parameterMatrix
 		forSelector: #dataset addOptions: { 
-			"(#NeoCSVReader -> #aniProkaryotes) ."
-			(#PP2CommaSeparatedParser -> #aniProkaryotes) };
+			(#NeoCSVReader -> #aniProkaryotes) .
+			"(#PP2CommaSeparatedParser -> #aniProkaryotes)"  };
 		forSelector: #benchmarkOperation addOptions: { 
 			#readCSV }.
 	^ parameterMatrix
@@ -28,7 +28,7 @@ CSVSMarkSuite class >> benchmarkParameters [
 CSVSMarkSuite class >> example [
 
 	CSVSMarkHarness run: { 
-	    'CSVSmarkHarness'. 
+	    'CSVSMarkHarness'. 
 	    'CSVSMarkSuite.benchCSV' . 
 	    1 . "The number of iterations"
 	    1 . "The number of processes"
@@ -39,13 +39,11 @@ CSVSMarkSuite class >> example [
 
 { #category : 'benchmarking' }
 CSVSMarkSuite >> benchCSV [
-	"Read CSV datasets defined in the receiver"
 
-	| csvReader |
-	csvReader := CSVSMarkReader 
-			newReader: dataset key 
-			forDataset: dataset value.
+	| reader  |
+	reader := CSVSMarkReader
+		        newReader: dataset key
+		        forDataset: dataset value.
 	self problemSize timesRepeat: [ 
-		csvReader perform: benchmarkOperation ]
-
+		reader perform: benchmarkOperation ].
 ]
